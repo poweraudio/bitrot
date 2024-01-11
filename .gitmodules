@@ -2,3 +2,6 @@
 	path = DPF
 	url = https://github.com/grejppi/DPF.git
 	branch = custom
+[submodule "waflib"]
+	path = waflib
+	url = https://github.com/drobilla/autowaf
