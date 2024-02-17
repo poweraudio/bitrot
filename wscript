@@ -35,6 +35,15 @@ def options(opt):
     opt.add_option('--use-upstream-dpf', dest='use_upstream_dpf',
                    action='store_true', default=False,
                    help='use upstream (non-customized) version of DPF')
+    opt.add_option('--skip-ladspa', dest='skip_ladspa',
+                   action='store_true', default=False,
+                   help="don't build plugins as LADSPA")
+    opt.add_option('--skip-vst', dest='skip_vst',
+                   action='store_true', default=False,
+                   help="don't build plugins as VST")
+    opt.add_option('--lv2-only', dest='lv2_only',
+                   action='store_true', default=False,
+                   help="build plugins only as LV2")
 
 def configure(conf):
     conf.env.append_value('CXXFLAGS', ['-std=c++11', '-fvisibility=hidden', '-O2'])
@@ -109,4 +118,7 @@ def configure(conf):
         )
 
 def build(bld):
+    if bld.options.lv2_only:
+        bld.options.skip_ladspa = True
+        bld.options.skip_vst = True
     bld.recurse('plugins')

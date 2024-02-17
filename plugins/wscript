@@ -13,7 +13,11 @@ def build(bld):
             return ''
 
     plugins = ['Reverser', 'Tapestop', 'Crush', 'Repeat']
-    formats = [('ladspa', 'bitrot_{0}'), ('vst', 'bitrot_{0}_vst')]
+    formats = []
+    if not bld.options.skip_ladspa:
+        formats.append(('ladspa', 'bitrot_{0}'))
+    if not bld.options.skip_vst:
+        formats.append(('vst', 'bitrot_{0}_vst'))
     bundle = 'bitrot.lv2'
 
     import os.path
