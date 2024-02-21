@@ -5,6 +5,7 @@ This fork of Bitrot has the following changes:
 * Replaced `waf` binary blob with [autowaf] in source form.
 * In the [`lv2-only`] branch, added build option `--lv2-only` to build plugins
   only as LV2.
+* -O3 optimizations are used.
 
 [autowaf]: https://github.com/drobilla/autowaf
 [`lv2-only`]: https://github.com/poweraudio/bitrot/tree/lv2-only
